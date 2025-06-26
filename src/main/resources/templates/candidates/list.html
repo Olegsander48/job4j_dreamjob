@@ -9,14 +9,18 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Имя</th>
-                <th scope="col">Дата публикации резюме</th>
+                <th scope="col">Дата публикации вакансии</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="candidate: ${candidates}">
                 <td th:text="${candidate.id}" />
-                <td th:text="${candidate.name}" />
-                <td th:text="${candidate.creationDate}" />
+                <td>
+                    <a th:text="${candidate.name}"
+                       th:href="@{/candidates/{candidateId}(candidateId=${candidate.id})}">
+                    </a>
+                </td>
+                <td th:text="${candidate.getFormattedCreationDate()}" />
             </tr>
             </tbody>
         </table>

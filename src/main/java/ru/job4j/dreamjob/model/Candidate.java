@@ -41,7 +41,11 @@ public class Candidate {
         this.description = description;
     }
 
-    public String getCreationDate() {
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public String getFormattedCreationDate() {
         return creationDate.format(DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy"));
     }
 
