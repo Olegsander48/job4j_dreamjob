@@ -8,14 +8,15 @@ public class Vacancy {
     private int id;
     private String title;
     private String description;
-    private LocalDateTime creationDate;
+    private LocalDateTime creationDate = LocalDateTime.now();
 
     public Vacancy(int id, String title, String description) {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.creationDate = LocalDateTime.now();
+    }
 
+    public Vacancy() {
     }
 
     public int getId() {
@@ -42,7 +43,11 @@ public class Vacancy {
         this.description = description;
     }
 
-    public String getCreationDate() {
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
+    public String getFormattedCreationDate() {
         return creationDate.format(DateTimeFormatter.ofPattern("HH:mm dd-MM-yyyy"));
     }
 
