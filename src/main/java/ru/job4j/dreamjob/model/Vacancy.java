@@ -9,11 +9,13 @@ public class Vacancy {
     private String title;
     private String description;
     private LocalDateTime creationDate = LocalDateTime.now();
+    private boolean visible;
 
-    public Vacancy(int id, String title, String description) {
+    public Vacancy(int id, String title, String description, boolean visible) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.visible = visible;
     }
 
     public Vacancy() {
@@ -55,6 +57,14 @@ public class Vacancy {
         this.creationDate = creationDate;
     }
 
+    public boolean getVisible() {
+        return visible;
+    }
+
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -64,13 +74,12 @@ public class Vacancy {
             return false;
         }
         Vacancy vacancy = (Vacancy) o;
-        return id == vacancy.id && Objects.equals(title, vacancy.title)
-                && Objects.equals(description, vacancy.description)
-                && Objects.equals(creationDate, vacancy.creationDate);
+        return Objects.equals(title, vacancy.title)
+                && Objects.equals(description, vacancy.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, description, creationDate);
+        return Objects.hash(title, description);
     }
 }
