@@ -1,7 +1,8 @@
-package ru.job4j.dreamjob.repository;
+package ru.job4j.dreamjob.repository.impl;
 
 import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Candidate;
+import ru.job4j.dreamjob.repository.interfaces.CandidateRepository;
 
 import javax.annotation.concurrent.ThreadSafe;
 import java.util.Collection;
@@ -18,13 +19,13 @@ public class MemoryCandidateRepository implements CandidateRepository {
 
     public MemoryCandidateRepository() {
         save(new Candidate(0, "Aleksey Ignatyev",
-                "3+ years experience of building microservice architecture"));
+                "3+ years experience of building microservice architecture", 3));
         save(new Candidate(0, "Vladimir Popov",
-                "Team Lead at AI startup"));
+                "Team Lead at AI startup", 3));
         save(new Candidate(0, "Aleksandr Demidov",
-                "Junior java developer at SoftBD"));
+                "Junior java developer at SoftBD", 1));
         save(new Candidate(0, "Elena Condrashova",
-                "Middle UX-designer"));
+                "Middle UX-designer", 2));
     }
 
     @Override
@@ -44,7 +45,8 @@ public class MemoryCandidateRepository implements CandidateRepository {
         return candidates.computeIfPresent(candidate.getId(),
                 (id, oldCandidate) -> new Candidate(oldCandidate.getId(),
                                                                         candidate.getName(),
-                                                                        candidate.getDescription())) != null;
+                                                                        candidate.getDescription(),
+                                                                        candidate.getCityId())) != null;
     }
 
     @Override

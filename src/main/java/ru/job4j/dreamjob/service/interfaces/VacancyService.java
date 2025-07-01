@@ -1,4 +1,4 @@
-package ru.job4j.dreamjob.service;
+package ru.job4j.dreamjob.service.interfaces;
 
 import ru.job4j.dreamjob.model.Vacancy;
 

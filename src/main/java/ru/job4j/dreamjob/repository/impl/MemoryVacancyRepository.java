@@ -1,8 +1,8 @@
-package ru.job4j.dreamjob.repository;
+package ru.job4j.dreamjob.repository.impl;
 
 import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Vacancy;
-
+import ru.job4j.dreamjob.repository.interfaces.VacancyRepository;
 import javax.annotation.concurrent.ThreadSafe;
 import java.util.Collection;
 import java.util.HashMap;
@@ -20,17 +20,17 @@ public class MemoryVacancyRepository implements VacancyRepository {
 
     public MemoryVacancyRepository() {
         save(new Vacancy(0, "Intern Java Developer",
-                "Requirements: your own computer, 20+ hours per week", true));
+                "Requirements: your own computer, 20+ hours per week", true, 1));
         save(new Vacancy(0, "Junior Java Developer",
-                "Work in office with mentor", true));
+                "Work in office with mentor", true, 2));
         save(new Vacancy(0, "Junior+ Java Developer",
-                "Work on fintech project", true));
+                "Work on fintech project", true, 1));
         save(new Vacancy(0, "Middle Java Developer",
-                "Requirements: 3+ years of experience", true));
+                "Requirements: 3+ years of experience", true, 1));
         save(new Vacancy(0, "Middle+ Java Developer",
-                "Requirements: experience in microservice architecture", true));
+                "Requirements: experience in microservice architecture", true, 3));
         save(new Vacancy(0, "Senior Java Developer",
-                "Design and architecting project on AWS", true));
+                "Design and architecting project on AWS", true, 4));
     }
 
     @Override
@@ -51,7 +51,8 @@ public class MemoryVacancyRepository implements VacancyRepository {
                 (id, oldVacancy) -> new Vacancy(oldVacancy.getId(),
                                                                 vacancy.getTitle(),
                                                                 vacancy.getDescription(),
-                                                                vacancy.getVisible())) != null;
+                                                                vacancy.getVisible(),
+                                                                vacancy.getCityId())) != null;
     }
 
     @Override

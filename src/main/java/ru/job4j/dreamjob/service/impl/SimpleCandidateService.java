@@ -1,8 +1,10 @@
-package ru.job4j.dreamjob.service;
+package ru.job4j.dreamjob.service.impl;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.dreamjob.model.Candidate;
-import ru.job4j.dreamjob.repository.CandidateRepository;
+import ru.job4j.dreamjob.repository.interfaces.CandidateRepository;
+import ru.job4j.dreamjob.service.interfaces.CandidateService;
+
 import java.util.Collection;
 import java.util.Optional;
 

@@ -10,10 +10,13 @@ public class Candidate {
     private String description;
     private LocalDateTime creationDate = LocalDateTime.now();
 
-    public Candidate(int id, String name, String description) {
+    private int cityId;
+
+    public Candidate(int id, String name, String description, int cityId) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.cityId = cityId;
     }
 
     public Candidate() {
@@ -55,6 +58,14 @@ public class Candidate {
         this.creationDate = creationDate;
     }
 
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -64,13 +75,12 @@ public class Candidate {
             return false;
         }
         Candidate candidate = (Candidate) o;
-        return id == candidate.id && Objects.equals(name, candidate.name)
-                                    && Objects.equals(description, candidate.description)
-                                    && Objects.equals(creationDate, candidate.creationDate);
+        return Objects.equals(name, candidate.name)
+                                    && Objects.equals(description, candidate.description);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, description, creationDate);
+        return Objects.hash(name, description);
     }
 }
