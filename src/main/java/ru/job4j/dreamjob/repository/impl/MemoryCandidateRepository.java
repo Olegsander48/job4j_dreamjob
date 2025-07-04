@@ -19,13 +19,13 @@ public class MemoryCandidateRepository implements CandidateRepository {
 
     public MemoryCandidateRepository() {
         save(new Candidate(0, "Aleksey Ignatyev",
-                "3+ years experience of building microservice architecture", 3));
+                "3+ years experience of building microservice architecture", 3, 0));
         save(new Candidate(0, "Vladimir Popov",
-                "Team Lead at AI startup", 3));
+                "Team Lead at AI startup", 3, 0));
         save(new Candidate(0, "Aleksandr Demidov",
-                "Junior java developer at SoftBD", 1));
+                "Junior java developer at SoftBD", 1, 0));
         save(new Candidate(0, "Elena Condrashova",
-                "Middle UX-designer", 2));
+                "Middle UX-designer", 2, 0));
     }
 
     @Override
@@ -46,7 +46,8 @@ public class MemoryCandidateRepository implements CandidateRepository {
                 (id, oldCandidate) -> new Candidate(oldCandidate.getId(),
                                                                         candidate.getName(),
                                                                         candidate.getDescription(),
-                                                                        candidate.getCityId())) != null;
+                                                                        candidate.getCityId(),
+                                                                        candidate.getFileId())) != null;
     }
 
     @Override

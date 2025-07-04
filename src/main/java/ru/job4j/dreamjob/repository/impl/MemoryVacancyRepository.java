@@ -20,17 +20,17 @@ public class MemoryVacancyRepository implements VacancyRepository {
 
     public MemoryVacancyRepository() {
         save(new Vacancy(0, "Intern Java Developer",
-                "Requirements: your own computer, 20+ hours per week", true, 1));
+                "Requirements: your own computer, 20+ hours per week", true, 1, 0));
         save(new Vacancy(0, "Junior Java Developer",
-                "Work in office with mentor", true, 2));
+                "Work in office with mentor", true, 2, 0));
         save(new Vacancy(0, "Junior+ Java Developer",
-                "Work on fintech project", true, 1));
+                "Work on fintech project", true, 1, 0));
         save(new Vacancy(0, "Middle Java Developer",
-                "Requirements: 3+ years of experience", true, 1));
+                "Requirements: 3+ years of experience", true, 1, 0));
         save(new Vacancy(0, "Middle+ Java Developer",
-                "Requirements: experience in microservice architecture", true, 3));
+                "Requirements: experience in microservice architecture", true, 3, 0));
         save(new Vacancy(0, "Senior Java Developer",
-                "Design and architecting project on AWS", true, 4));
+                "Design and architecting project on AWS", true, 4, 0));
     }
 
     @Override
@@ -52,7 +52,8 @@ public class MemoryVacancyRepository implements VacancyRepository {
                                                                 vacancy.getTitle(),
                                                                 vacancy.getDescription(),
                                                                 vacancy.getVisible(),
-                                                                vacancy.getCityId())) != null;
+                                                                vacancy.getCityId(),
+                                                                vacancy.getFileId())) != null;
     }
 
     @Override
