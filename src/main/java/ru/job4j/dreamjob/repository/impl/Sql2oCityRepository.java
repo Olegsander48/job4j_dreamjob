@@ -1,11 +1,13 @@
 package ru.job4j.dreamjob.repository.impl;
 
+import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 import ru.job4j.dreamjob.model.City;
 import ru.job4j.dreamjob.repository.interfaces.CityRepository;
 
 import java.util.Collection;
 
+@Repository
 public class Sql2oCityRepository implements CityRepository {
     private final Sql2o sql2o;
 
