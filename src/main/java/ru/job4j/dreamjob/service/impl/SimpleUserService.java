@@ -10,8 +10,8 @@ import java.util.Optional;
 public class SimpleUserService implements UserService {
     private final UserRepository userRepository;
 
-    public SimpleUserService(UserRepository sql20UserRepository) {
-        this.userRepository = sql20UserRepository;
+    public SimpleUserService(UserRepository sql2oUserRepository) {
+        this.userRepository = sql2oUserRepository;
     }
 
     @Override

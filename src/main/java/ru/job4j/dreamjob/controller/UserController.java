@@ -9,7 +9,7 @@ import ru.job4j.dreamjob.service.interfaces.UserService;
 @Controller
 @RequestMapping("/users")
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -22,10 +22,26 @@ public class UserController {
 
     @PostMapping("/register")
     public String register(Model model, @ModelAttribute User user) {
-        var savedUser = userService.save(user);
-        if (savedUser.isEmpty()) {
+        try {
+            userService.save(user);
+            return "redirect:/vacancies";
+        } catch (Exception ex) {
             model.addAttribute("message", "Пользователь с такой почтой уже существует");
             return "fragments/errors/404";
+        }
+    }
+
+    @GetMapping("/login")
+    public String getLoginPage() {
+        return "users/login";
+    }
+
+    @PostMapping("/login")
+    public String loginUser(@ModelAttribute User user, Model model) {
+        var userOptional = userService.findByEmailAndPassword(user.getEmail(), user.getPassword());
+        if (userOptional.isEmpty()) {
+            model.addAttribute("error", "Почта или пароль введены неверно");
+            return "users/login";
         }
         return "redirect:/vacancies";
     }
